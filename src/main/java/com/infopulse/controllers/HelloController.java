@@ -14,12 +14,12 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-   // @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    // @RequestMapping(value = "/hello", method = RequestMethod.POST)
     @PostMapping(value = "/hello")
     public ModelAndView getHello(@RequestParam("username") String username){
+        helloService.save(username);
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("answer");
-        mv.addObject("name", helloService.changeName(username));
+        mv.setViewName("list");
         return mv;
     }
 
@@ -29,5 +29,14 @@ public class HelloController {
         mv.setViewName("index");
         return mv;
     }
+
+    @GetMapping(value = "/list")
+    public ModelAndView getListUsername(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("usernames");
+        mv.addObject("list", helloService.getUsers());
+        return mv;
+    }
+
 
 }
