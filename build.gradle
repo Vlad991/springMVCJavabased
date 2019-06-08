@@ -48,11 +48,11 @@ dependencies {
 
 cargo {
     containerId = 'tomcat7x'
-    port = 8090
+    port = 8080
 
 
     deployable {
-        context = 'mycontext'
+        context = 'springMVCJavaBased'
     }
 
     remote {
